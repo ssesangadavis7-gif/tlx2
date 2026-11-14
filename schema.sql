@@ -1,7 +1,7 @@
 -- Run this whole file in Supabase: SQL Editor > New query > Run.
 -- STEP 1: change the email below to YOUR admin email (the one you create in Authentication > Users).
 create or replace function is_admin() returns boolean language sql stable as $$
-  select coalesce(auth.jwt()->>'email','') = 'CHANGE_ME@example.com'
+  select coalesce(auth.jwt()->>'email','') = 'ssesangadavis7@gmail.com'
 $$;
 
 create table if not exists categories(id bigint generated always as identity primary key, name text unique not null, grp text not null);
