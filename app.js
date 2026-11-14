@@ -13,7 +13,7 @@ const cfg=()=>({...DEF,...DB.settings});
 const cats=()=>DB.cats;
 const prods=()=>DB.prods;
 const SUPABASE_URL = 'https://wgsiisnmkgqozdemdqlh.supabase.co';
-const SUPABASE_ANON_KEY = 'sb_publishable_KvISgcPTQSIJb8IS6MhbfA_rxt15sS1';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indnc2lpc25ta2dxb3pkZW1kcWxoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQ2NTIyNTMsImV4cCI6MjExMDIyODI1M30.w6PGXTZx5n8aCCCvW2zSD6rfgNwoyJ8uP0xn8cvBdoQ';
 async function load(){try{const[p,c,t]=await Promise.all([sb.from('products').select('*').order('created_at',{ascending:false}),sb.from('categories').select('*').order('id'),sb.from('settings').select('*').eq('id',1).maybeSingle()]);
  const er=p.error||c.error;DB.err=er?er.message:null;
  if(!er){DB.prods=p.data.map(r=>({id:r.id,name:r.name,cat:r.category,desc:r.description||'',price:r.price??'',status:r.status,img:r.image_url||''}));DB.cats=c.data.map(r=>({id:r.id,n:r.name,g:r.grp}))}
